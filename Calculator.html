@@ -113,8 +113,9 @@ $(".btn-danger").on("click", function(){
   
     operator_check = true;
     operators = $(this).val();
-
-    $("#operator").text(operators);
+// if u do .text(operators) youll get add instead of + 
+// this.text gets the text inside the add id 
+    $("#operator").text($(this).text());
 
 
 });
@@ -127,9 +128,27 @@ $(".btn-success").on("click", function(){
    else if (operators == "minus") {
        result = first_number - second_number;
    }
+   else if (operators == "times"){
+       result = first_number * second_number;
+   }
+   else if (operators == "divide") {
+       result = first_number / second_number;
+   }
+
+   
    $("#result").text(result);
 });
 
+$(".btn-dark").on("click", function(){
+    $("#first-number").empty();
+    $("#second-number").empty();
+    $("#operator").empty();
+    $("#result").empty();
+    first_number = "";
+    second_number = "";
+    operators = "";
+
+})
 });
 
 </script>
