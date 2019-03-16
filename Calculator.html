@@ -75,7 +75,60 @@
 $(document).ready(function() {
 
 // Your code here...
+// write a function for clear, operators, first and second number. each fucntion
+// gets activated with a click. 
+var first_number = "";
+var second_number = "";
+var operator_check = false;
+var operators = "";
+var result;
 
+// this is for a when a number gets clicked
+$(".btn-primary").on("click", function(){
+// this.value returns a string of the button selected. 
+// val() is used to get the current "value = 1" attribute of the element
+    if(operator_check){
+  // if ywou dont put "+=" it will just input the first number click
+  // i.e if intended 85 it will only record the most recent which is 5 
+  // but it will show 85 cause of append IFFF += is not there.
+  // since += is there u put text since it will put all the text in it .
+
+        second_number = second_number + $(this).val();
+// if youre having trouble in fututre to understand
+// use this console log to refresh your memeory
+//        console.log(second_number);
+        $("#second-number").text(second_number);
+        
+        
+    }
+    else {
+        first_number = first_number + $(this).val();
+        console.log(first_number);
+        $("#first-number").text(first_number);
+    }    
+});
+
+//this is for a when an operator gets selected
+$(".btn-danger").on("click", function(){
+  
+    operator_check = true;
+    operators = $(this).val();
+
+    $("#operator").text(operators);
+
+
+});
+
+//this is when the equals gets clicked
+$(".btn-success").on("click", function(){
+   if (operators == "plus"){
+       result = parseInt(first_number) + parseInt(second_number);
+   }
+   else if (operators == "minus") {
+       result = first_number - second_number;
+   }
+   $("#result").text(result);
+});
 
 });
 

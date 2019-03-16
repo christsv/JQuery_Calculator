@@ -65,19 +65,21 @@ $(document).ready(function() {
     $("#calculator").append(button);
 
   }
-
+  var first = numbers.slice(0,10);
   $(".btn").on("click", function(){
 
-    var newbutton;
-   newbutton.text($(this).attr("number-value"));
-    var first = numbers.slice(0,10);
+
+
     //$(this).text() is similiar to event.key in js
       //console.log(parseInt($(this).text()));
 
     for(var j = 0; j <numbers.length; j++){
 
       if($(this).text() == first[j] ){
-
+//so its creating a new line because everytime i click it makes a new div 
+//but i want the numbers to be in the same div
+        var newbutton = $("<p>");
+        newbutton.text($(this).attr("number-value"));
         $("#first-number").append($(newbutton));
       }
     }
